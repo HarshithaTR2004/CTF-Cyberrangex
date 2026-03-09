@@ -1,0 +1,171 @@
+version: '3.8'
+
+services:
+  # Linux Privilege Escalation VMs
+  vm-linux-easy:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-linux-easy
+    ports:
+      - "2220:22"      # SSH
+      - "4200:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=easy
+      - DOMAIN=linux-privilege-escalation
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-linux-medium:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-linux-medium
+    ports:
+      - "2230:22"      # SSH
+      - "4210:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=medium
+      - DOMAIN=linux-privilege-escalation
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-linux-hard:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-linux-hard
+    ports:
+      - "2240:22"      # SSH
+      - "4220:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=hard
+      - DOMAIN=linux-privilege-escalation
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  # Active Directory Attacks VMs (Linux-based for now)
+  vm-ad-easy:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-ad-easy
+    ports:
+      - "2221:22"      # SSH
+      - "4260:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=easy
+      - DOMAIN=active-directory
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-ad-medium:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-ad-medium
+    ports:
+      - "2222:22"      # SSH
+      - "4270:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=medium
+      - DOMAIN=active-directory
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-ad-hard:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-ad-hard
+    ports:
+      - "2223:22"      # SSH
+      - "4280:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=hard
+      - DOMAIN=active-directory
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  # Full Machine Exploitation (Pentest Lab) VMs
+  vm-pentest-easy:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-pentest-easy
+    ports:
+      - "2250:22"      # SSH
+      - "4230:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=easy
+      - DOMAIN=pentest-lab
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-pentest-medium:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-pentest-medium
+    ports:
+      - "2260:22"      # SSH
+      - "4240:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=medium
+      - DOMAIN=pentest-lab
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+  vm-pentest-hard:
+    build:
+      context: ./vms
+      dockerfile: Dockerfile
+    container_name: vm-pentest-hard
+    ports:
+      - "2270:22"      # SSH
+      - "4250:4200"    # Web Terminal
+    environment:
+      - VM_TYPE=linux
+      - DIFFICULTY=hard
+      - DOMAIN=pentest-lab
+    networks:
+      - cyberrangex-network
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+
+networks:
+  cyberrangex-network:
+    external: true
